@@ -1,0 +1,46 @@
+<h1>PDF Previewer</h1>
+<p>Use the form below to preview any password-protected PDF file in this web application.</p>
+
+<form class="pure-form">
+  <fieldset>
+    <input type="text" id="password" placeholder="Enter PDF Password" />
+    <input class="original-pdf-upload-button" type="file" name="file" id="file" accept=".pdf,.fdf,.xfdf" multiple="multiple" />
+    <label class="pure-button new-pdf-upload-button" for="file">Select a PDF file</label>
+  </fieldset>
+</form>
+
+<div id="pdf-viewer"></div>
+<script src="/lib/PDFViewCtrl.full.js"></script>
+<script>
+  var PDFViewer = PDFViewCtrl.PDFViewer;
+  var pdfViewer = new PDFViewer({
+    libPath: '/lib',
+    jr: {
+      licenseSN: "{{ licenseSN }}",
+      licenseKey: "{{ licenseKey }}",
+    },
+  });
+  pdfViewer.init('#pdf-viewer');
+
+  document.getElementById('file').onchange = function (e) {
+    if (!this.value) {
+      return;
+    }
+    var pdf,fdf;
+    for (var i = e.target.files.length; i--;) {
+      var file = e.target.files[i];
+      var filename = file.name;
+      if (/\.pdf$/i.test(filename)) {
+        pdf = file
+      } else if (/\.(x)?fdf$/i.test(filename)) {
+        fdf = file
+      }
+    }
+    var options = {password: '', fdf: {file: fdf}};
+    if (document.getElementById('password').value) {
+      options.password = document.getElementById('password').value;
+    }
+    pdfViewer.openPDFByFile(pdf, options);
+    this.value = '';
+  };
+</script>
