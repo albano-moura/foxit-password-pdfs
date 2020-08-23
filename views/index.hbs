@@ -5,6 +5,7 @@
 </p>
 <p>Use the form below to preview any password-protected PDF file in this web application.</p>
 
+<!-- PDF Upload form -->
 <form class="pure-form">
   <fieldset>
     <input type="password" id="password" placeholder="Enter PDF Password" />
@@ -13,8 +14,10 @@
   </fieldset>
 </form>
 
+<!-- PDF Display Div -->
 <div id="pdf-viewer"></div>
 
+<!-- Foxit and custom JavaScript -->
 <script src="/lib/PDFViewCtrl.full.js"></script>
 <script>
   var PDFViewer = PDFViewCtrl.PDFViewer;

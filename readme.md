@@ -15,4 +15,8 @@ This Node application demonstrates using the [Foxit PDF SDK for Web](https://dev
 - Run the local server: `npm start`
 - Visit [localhost:3000/](http://localhost:3000/) and open a password-protected PDF.
 
+### Successful file preview
 ![Preview of the web application](screenshot-1.png)
+
+### Incorrect password error
+![Incorrect password error](screenshot-2.png)
