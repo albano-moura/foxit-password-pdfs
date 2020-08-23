@@ -9,6 +9,16 @@ body {
   padding: 30px;
 }
 
+#wrong-password {
+  display: none;
+}
+
+.error {
+  background-color: #f5c0c0;
+  color: #792525;
+  padding: 10px;
+}
+
 /* File upload button styling */
 .original-pdf-upload-button {
   width: 0.1px;

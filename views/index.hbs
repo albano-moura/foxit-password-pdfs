@@ -1,4 +1,8 @@
 <h1>PDF Previewer</h1>
+<p id="wrong-password" class="error"><strong>Whoops!</strong>
+  It looks like the password you entered was incorrect.
+  Please enter a password and try uploading your file again.
+</p>
 <p>Use the form below to preview any password-protected PDF file in this web application.</p>
 
 <form class="pure-form">
@@ -42,7 +46,11 @@
       options.password = document.getElementById('password').value;
       document.getElementById('password').value = '';
     }
-    pdfViewer.openPDFByFile(pdf, options);
+    pdfViewer.openPDFByFile(pdf, options)
+      .catch(error => {
+        console.error(error);
+        document.getElementById('wrong-password').style.display = 'block';
+      });
     this.value = '';
   };
 </script>
