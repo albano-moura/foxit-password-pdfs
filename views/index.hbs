@@ -40,6 +40,7 @@
     var options = {password: '', fdf: {file: fdf}};
     if (document.getElementById('password').value) {
       options.password = document.getElementById('password').value;
+      document.getElementById('password').value = '';
     }
     pdfViewer.openPDFByFile(pdf, options);
     this.value = '';
